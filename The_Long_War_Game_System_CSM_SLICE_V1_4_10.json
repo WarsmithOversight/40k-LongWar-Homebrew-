@@ -1,0 +1,315 @@
+{
+  "gameSystem": {
+    "id": "d142-587a-138a-4d1f",
+    "name": "⚔️ The Long War: List Builder",
+    "battleScribeVersion": "2.03",
+    "revision": 7,
+    "type": "gameSystem",
+    "categoryEntries": [
+      {
+        "name": "Configuration",
+        "id": "default-category",
+        "hidden": false
+      },
+      {
+        "name": "HQ",
+        "id": "a727-2499-7065-4d2b",
+        "hidden": false
+      },
+      {
+        "name": "Troops",
+        "id": "9ee1-67f6-0764-45e0",
+        "hidden": false
+      },
+      {
+        "name": "Elite",
+        "id": "a5da-5070-5e05-48c9",
+        "hidden": false
+      },
+      {
+        "name": "Dedicated Transport",
+        "id": "7eb8-2bcd-2a11-f0e6",
+        "hidden": false
+      },
+      {
+        "name": "Fast Attack",
+        "id": "5a47-faaf-b10b-4735",
+        "hidden": false
+      },
+      {
+        "name": "Heavy Support",
+        "id": "03dd-8066-79c7-457d",
+        "hidden": false
+      },
+      {
+        "name": "Flyers",
+        "id": "35c4-b93a-0a74-4afc",
+        "hidden": false
+      },
+      {
+        "name": "Fortifications",
+        "id": "24db-f9cf-2309-442b",
+        "hidden": false
+      },
+      {
+        "name": "Lord of War",
+        "id": "148f-beb4-09a6-47d5",
+        "hidden": false
+      },
+      {
+        "name": "🪖 Infantry",
+        "id": "f9cb-e0ec-118d-4665",
+        "hidden": false
+      },
+      {
+        "name": "🦖 Monster",
+        "id": "cdd2-c99b-8c06-4579",
+        "hidden": false
+      },
+      {
+        "name": "🔩 Vehicle",
+        "id": "9ee7-7124-11d4-4476",
+        "hidden": false
+      },
+      {
+        "name": "🐎 Cavalry",
+        "id": "d865-e029-9a97-494a",
+        "hidden": false
+      },
+      {
+        "name": "Warlord",
+        "id": "6be7ce3e-82b7-499a-8401",
+        "hidden": false,
+        "comment": "Semantic category assigned ONLY to a selected Warlord checkbox. Not a primary role or visible keyword line."
+      }
+    ],
+    "forceEntries": [],
+    "selectionEntries": [
+      {
+        "type": "upgrade",
+        "import": true,
+        "name": "About Warsmith's Listbuilder",
+        "hidden": false,
+        "id": "2053-f8a9-591b-4734",
+        "sortIndex": 100,
+        "categoryLinks": [
+          {
+            "name": "Configuration",
+            "hidden": false,
+            "id": "b77b-a572-42eb-4bc3",
+            "targetId": "default-category",
+            "primary": true
+          }
+        ],
+        "rules": [
+          {
+            "name": "A fancy notepad, not a rules engine",
+            "id": "9869-2579-6945-4a26",
+            "hidden": false,
+            "description": "The listbuilder is intended to replace a notepad, not The Long War rules PDFs. It quickly and simply records the choices that make up an army and catches illegal list construction. It does not reproduce every unit special rule, weapon profile, or procedural rule from the rulebook and army rules PDFs.\n\nPlayers are expected to consult The Long War rulebook and the relevant army rules during list construction.",
+            "noindex": false
+          },
+          {
+            "name": "Not every legal option needs its own button",
+            "id": "8a74-beb0-d357-4eed",
+            "hidden": false,
+            "description": "The listbuilder is intended to make common choices quick, rather than give every legal option equal prominence. Some uncommon squad sizes or loadout combinations may therefore not be represented. Their absence does not make them illegal; The Long War rules PDFs remain authoritative.\n\nWhen players actually make use of an uncommon option, it can be added accordingly.",
+            "noindex": false
+          }
+        ],
+        "modifiers": [
+          {
+            "type": "set",
+            "value": "1",
+            "field": "defaultAmount"
+          }
+        ],
+        "comment": "Permanent informational Configuration entry, adapted from Reforged's two-part About Warsmith's Listbuilder. No detachment validation or availability logic belongs here; no min/max constraint. The Long War rulebook and army PDFs remain authoritative."
+      },
+      {
+        "type": "upgrade",
+        "import": true,
+        "name": "Crusade Detachment Mandatory HQ: 0/1",
+        "hidden": false,
+        "id": "60c8c36a-283e-537e-9dc1",
+        "sortIndex": 30,
+        "categoryLinks": [
+          {
+            "name": "Configuration",
+            "hidden": false,
+            "id": "6bada289-3ad0-5f3b-98a2",
+            "targetId": "default-category",
+            "primary": true
+          }
+        ],
+        "modifiers": [
+          {
+            "type": "set",
+            "value": "1",
+            "field": "defaultAmount"
+          },
+          {
+            "type": "set",
+            "field": "name",
+            "value": "Crusade Detachment Mandatory HQ: 1/1",
+            "conditions": [
+              {
+                "type": "atLeast",
+                "value": 1,
+                "field": "selections",
+                "scope": "roster",
+                "childId": "a727-2499-7065-4d2b",
+                "shared": true,
+                "includeChildSelections": true,
+                "includeChildForces": true,
+                "queryFromSelf": false,
+                "childName": "HQ"
+              }
+            ]
+          }
+        ],
+        "comment": "Automatic, informational mandatory HQ progress counter, capped at 1. Counts selected units in the HQ category across the roster, using the same roster category conditions and conditional name pattern as Reforged. This entry does not impose detachment limits or create a separate detachment. Compulsory-minimum enforcement will be added in a later validation pass."
+      },
+      {
+        "type": "upgrade",
+        "import": true,
+        "name": "Crusade Detachment Mandatory Troops: 0/2",
+        "hidden": false,
+        "id": "0be6a5bb-6ee2-5e9b-9939",
+        "sortIndex": 40,
+        "categoryLinks": [
+          {
+            "name": "Configuration",
+            "hidden": false,
+            "id": "c7acd798-c109-5275-9037",
+            "targetId": "default-category",
+            "primary": true
+          }
+        ],
+        "modifiers": [
+          {
+            "type": "set",
+            "value": "1",
+            "field": "defaultAmount"
+          },
+          {
+            "type": "set",
+            "field": "name",
+            "value": "Crusade Detachment Mandatory Troops: 1/2",
+            "conditions": [
+              {
+                "type": "atLeast",
+                "value": 1,
+                "field": "selections",
+                "scope": "roster",
+                "childId": "9ee1-67f6-0764-45e0",
+                "shared": true,
+                "includeChildSelections": true,
+                "includeChildForces": true,
+                "queryFromSelf": false,
+                "childName": "Troops"
+              },
+              {
+                "type": "lessThan",
+                "value": 2,
+                "field": "selections",
+                "scope": "roster",
+                "childId": "9ee1-67f6-0764-45e0",
+                "shared": true,
+                "includeChildSelections": true,
+                "includeChildForces": true,
+                "queryFromSelf": false,
+                "childName": "Troops"
+              }
+            ]
+          },
+          {
+            "type": "set",
+            "field": "name",
+            "value": "Crusade Detachment Mandatory Troops: 2/2",
+            "conditions": [
+              {
+                "type": "atLeast",
+                "value": 2,
+                "field": "selections",
+                "scope": "roster",
+                "childId": "9ee1-67f6-0764-45e0",
+                "shared": true,
+                "includeChildSelections": true,
+                "includeChildForces": true,
+                "queryFromSelf": false,
+                "childName": "Troops"
+              }
+            ]
+          }
+        ],
+        "comment": "Automatic, informational mandatory Troops progress counter, capped at 2. Counts selected units in the Troops category across the roster, using the same roster category conditions and conditional name pattern as Reforged. This entry does not impose detachment limits or create a separate detachment. Compulsory-minimum enforcement will be added in a later validation pass."
+      },
+      {
+        "type": "upgrade",
+        "import": true,
+        "name": "👑 Mandatory Warlord: 0/1",
+        "hidden": false,
+        "id": "37b96467-151f-4f83-b787",
+        "sortIndex": 50,
+        "categoryLinks": [
+          {
+            "name": "Configuration",
+            "hidden": false,
+            "id": "af3d8f42-e696-4a58-9455",
+            "targetId": "default-category",
+            "primary": true
+          }
+        ],
+        "modifiers": [
+          {
+            "type": "set",
+            "value": "1",
+            "field": "defaultAmount"
+          },
+          {
+            "type": "set",
+            "field": "name",
+            "value": "👑 Mandatory Warlord: 1/1",
+            "conditions": [
+              {
+                "type": "atLeast",
+                "value": 1,
+                "field": "selections",
+                "scope": "roster",
+                "childId": "6be7ce3e-82b7-499a-8401",
+                "shared": true,
+                "includeChildSelections": true,
+                "includeChildForces": true,
+                "queryFromSelf": false,
+                "childName": "Warlord"
+              }
+            ]
+          }
+        ],
+        "comment": "Live mandatory Warlord designation objective. This is not a hard minimum selection constraint; an over-one exception is permissive-corrective in faction Force Entries."
+      }
+    ],
+    "costTypes": [
+      {
+        "name": "Points",
+        "id": "0ad5-d8d8-8e56-4559",
+        "defaultCostLimit": -1,
+        "hidden": false
+      }
+    ],
+    "profileTypes": [
+      {
+        "name": "🏷️ Keywords",
+        "id": "625a-911c-edd9-4ce6",
+        "characteristicTypes": [
+          {
+            "name": "Text",
+            "id": "806f-700d-2421-4c42"
+          }
+        ]
+      }
+    ],
+    "comment": "TEST V3. Adds two live, roster-wide Crusade mandatory goal counters in Configuration; no dedicated detachment force/selector or rule-cap validation. Allegiance forces remain faction-specific. | V3.1: one visible Dedicated Transport primary category. No native maximum; custom correction lives in faction force category links. | CSM SLICE V1.3: rename the sole profile type Unit Abilities -> Keywords. Same type and characteristic IDs, no structural or mechanical changes. | CSM SLICE V1.4.10: About Warsmith's Listbuilder ported from Reforged V41 as two updated player-facing guidance rules; no mechanical changes."
+  }
+}
