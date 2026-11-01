@@ -3,7 +3,7 @@
     "id": "d142-587a-138a-4d1f",
     "name": "⚔️ The Long War: List Builder",
     "battleScribeVersion": "2.03",
-    "revision": 7,
+    "revision": 9,
     "type": "gameSystem",
     "categoryEntries": [
       {
@@ -80,7 +80,13 @@
         "name": "Warlord",
         "id": "6be7ce3e-82b7-499a-8401",
         "hidden": false,
-        "comment": "Semantic category assigned ONLY to a selected Warlord checkbox. Not a primary role or visible keyword line."
+        "comment": "Hidden semantic marker placed on a *selected Warlord designation* rather than on all eligible Characters. The Game System's live counter counts this category; the active faction force enforces the over-one limit. Do not attach to the parent unit merely because it can become Warlord."
+      },
+      {
+        "name": "Psyker",
+        "id": "150c-ffee-00d8-4dc3",
+        "hidden": true,
+        "comment": "Semantic unit-level eligibility marker for the Psyker (X) SPECIAL RULE, not a literal datasheet keyword. Only attach to a unit when its selected configuration actually grants Psyker (X); do not list Special Rules as user-facing profiles. Used by Iron Warriors' Mark of Chaos restriction (unit-local)."
       }
     ],
     "forceEntries": [],
@@ -124,7 +130,7 @@
             "field": "defaultAmount"
           }
         ],
-        "comment": "Permanent informational Configuration entry, adapted from Reforged's two-part About Warsmith's Listbuilder. No detachment validation or availability logic belongs here; no min/max constraint. The Long War rulebook and army PDFs remain authoritative."
+        "comment": "Default-inserted, informational player guidance only. Keep user-facing text concise and free of internal engineering notes. This is not an army-legalization or source-rules engine."
       },
       {
         "type": "upgrade",
@@ -168,7 +174,7 @@
             ]
           }
         ],
-        "comment": "Automatic, informational mandatory HQ progress counter, capped at 1. Counts selected units in the HQ category across the roster, using the same roster category conditions and conditional name pattern as Reforged. This entry does not impose detachment limits or create a separate detachment. Compulsory-minimum enforcement will be added in a later validation pass."
+        "comment": "Default-inserted dynamic name: 0/1 -> 1/1 via roster-wide primary HQ count. A visible completion objective, not an automatic missing-HQ error or a maximum-slot constraint. Replacing its primary category would change the count. The active faction force checks if this Configuration entry is deleted."
       },
       {
         "type": "upgrade",
@@ -243,7 +249,7 @@
             ]
           }
         ],
-        "comment": "Automatic, informational mandatory Troops progress counter, capped at 2. Counts selected units in the Troops category across the roster, using the same roster category conditions and conditional name pattern as Reforged. This entry does not impose detachment limits or create a separate detachment. Compulsory-minimum enforcement will be added in a later validation pass."
+        "comment": "Default-inserted dynamic name: 0/2 -> 1/2 -> 2/2 via roster-wide primary Troops count. Capped as progress, not as inventory. Deliberately no red error merely for an incomplete newly created army. Deletion protection lives on the active faction force."
       },
       {
         "type": "upgrade",
@@ -287,7 +293,7 @@
             ]
           }
         ],
-        "comment": "Live mandatory Warlord designation objective. This is not a hard minimum selection constraint; an over-one exception is permissive-corrective in faction Force Entries."
+        "comment": "Default-inserted dynamic name: 0/1 -> 1/1 when a selected Warlord checkbox contributes the hidden Warlord category. No red error for an incomplete roster. Faction force enforces Warlord max-one and protects against deletion of this Configuration entry."
       }
     ],
     "costTypes": [
@@ -310,6 +316,6 @@
         ]
       }
     ],
-    "comment": "TEST V3. Adds two live, roster-wide Crusade mandatory goal counters in Configuration; no dedicated detachment force/selector or rule-cap validation. Allegiance forces remain faction-specific. | V3.1: one visible Dedicated Transport primary category. No native maximum; custom correction lives in faction force category links. | CSM SLICE V1.3: rename the sole profile type Unit Abilities -> Keywords. Same type and characteristic IDs, no structural or mechanical changes. | CSM SLICE V1.4.10: About Warsmith's Listbuilder ported from Reforged V41 as two updated player-facing guidance rules; no mechanical changes."
+    "comment": "THE LONG WAR / GAME SYSTEM — CURRENT-STATE HANDOFF (Iron Warriors start, 2026-10-31)\nAUTHORITY: This Game System defines reusable New Recruit presentation/validation infrastructure; the Long War core rules, faction codices, Allegiances and Rites are authoritative for actual legality. Do not import Reforged gameplay rules merely because we reuse its user interface and proven catalogue patterns.\nRESPONSIBILITIES: This Game System owns the primary Battlefield Role categories (HQ, Troops, Elite, Dedicated Transport, Fast Attack, Heavy Support, Flyers, Fortifications, Lord of War), reusable unit-type presentation categories, hidden 'Warlord' marker and reusable hidden 'Psyker' eligibility marker, the '🏷️ Keywords' profile type, and default-inserted Configuration information. The faction catalogue owns actual units, faction-specific Allegiances/Rites, shared keyword categories, and its force-wide validation. There is no separate Crusade Detachment selection or permanent force-organisation chart.\nCONVENTIONS: Configuration sort positions are 10 Allegiance / 20 Rite / 30 Mandatory HQ / 40 Mandatory Troops / 50 Mandatory Warlord / 90 Updated / 100 About; preserve ordering when adding new objectives. Primary category determines the player's unit browser heading and which force-organisation slot a selection counts toward. Type and semantic keywords are secondary categories, independent of the displayed emoji-bearing Keywords profile. Keep real keyword names unadorned in hidden categories; emojis belong in presentation only. Different Battlefield Role entries may eventually share a hidden 'Counts as' identity, but never replace slot accounting with it.\nPLAYER UX: Configuration shows actionable goals (mandatory HQ/Troops/Warlord progress), not standing maximum limits. Role ceilings and conditional restrictions raise three-sentence problem/rule/correction errors when violated; do not hard-gate or silently remove selected units. Mandatory counters are intentionally informational: a fresh unfinished roster must not start with red errors. Faction force-level checks protect against deletion of essential Configuration entries, but informational About/Updated entries do not need those safeguards.\nKEYWORD NUMBER: The Long War core rules say singular and plural forms of a keyword are equivalent. Choose a sensible canonical semantic-category identity per concept for new work, without touching existing stable IDs merely for spelling (e.g. Veterans, Chaos Lord). 'Psyker' here encodes the Psyker (X) special-rule eligibility for validation only; do not add a player-facing Special Rules profile.\nMAINTENANCE: Preserve existing IDs, native (None) option semantics, stable selected entries, selection topology and visual ordering. Document only non-obvious design decisions, dependencies, deliberate source deviations, engine quirks and verified/untested behavior. Do not repeat ordinary unit points, category names, or option text in comments. No Special Rules/ability encyclopedia in the roster: the PDF stays authoritative.\nSTATUS: The early V3.3 force-org test scaffold was reported working in New Recruit. Later Warlord, configuration-integrity, polymorphic, keyword and dual-claw behaviors have static checks, not comprehensive live confirmation."
   }
 }
